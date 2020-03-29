@@ -47,6 +47,12 @@ function generateMap(json_path, idxs, center){
       zoom: 11,
       center: center
   });
+  map.setOptions({styles: [
+          {
+            featureType: 'poi.business',
+            stylers: [{visibility: 'off'}]
+          }
+        ]});
   $.getJSON(json_path, function(json){
     console.log('JSON Loaded');
     console.log(json);
