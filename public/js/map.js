@@ -39,6 +39,7 @@ function initMap() {
   var nyc_lat_lng = {lat: nyc_lat, lng: nyc_lng};
   generateMap(initial_json_path, drop_in_center_indexes, nyc_lat_lng);
 }
+
 function generateMap(json_path, idxs, center){
   //Center map based on location of markers
   let map = new google.maps.Map(
