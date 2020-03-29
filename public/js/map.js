@@ -1,5 +1,4 @@
 //require('dotenv').config();
-console.log(process.env);
 function initMap() {
   // The location of Uluru
   var uluru = {lat: -25.344, lng: 131.036};
@@ -16,5 +15,5 @@ function initMap() {
   });
 }
 let apiScript = document.getElementById("apiScript");
-apiScript.src = "";
+apiScript.src = "https://maps.googleapis.com/maps/api/js?key=**API HERE**&callback=initMap";
 //  <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>

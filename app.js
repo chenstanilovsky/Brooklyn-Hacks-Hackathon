@@ -2,12 +2,15 @@ let express = require('express');
 let app = express();
 let path = require('path');
 
+app.use(express.static(path.join(__dirname)));
+
 app.get('/', function(req,res){
-  res.sendFile(path.join(__dirname + '/index.html'));
+  res.sendFile('/index.html');
 });
-app.get('/map.js', function(req,res){
-  res.sendFile(path.join(__dirname + "/map.js"))
+app.get('/index.html', function(req,res){
+  res.sendFile('/index.html');
 });
+
 app.listen(8000);
 /*const server = http.createServer((req, res) => {
   res.statusCode = 200;
