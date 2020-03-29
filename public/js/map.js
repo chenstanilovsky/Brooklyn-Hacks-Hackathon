@@ -1,53 +1,75 @@
-function generateMarkers(map){
-  $.getJSON('homeless_drop_in_center.json', function(json){
-    console.log('JSON Loaded');
-    let lat_idx = 13;
-    let lng_idx = 14;
-    for(let i = 0; i < json['data'].length; i++){
-      let lat = parseInt(json['data'][0][lat_idx]);
-      let lng = parseInt(json['data'][0][lng_idx]);
-      let marker = new google.maps.Marker({
-        position: {lat, lng},
-        map: map
-      });
+const drop_in_center_indexes = Object.freeze({
+  "Name": 8,
+  "Borough": 9,
+  "Address": 10,
+  "Hours": 11,
+  "Zip": 12,
+  "Lat": 13,
+  "Lng": 14,
+  "Phone": -1
+});
+/*const facilities_indexes = Object.freeze({
+  "Name": 11,
+  "Borough": 17,
+  "Address": 12,
+  "Hours": -1,
+  "Zip": 13,
+  "Lat": -1,
+  "Lng": -1,
+  "Point":
+});
+*/
+function parseHoursOpen(hours){
+  let splitStr = hours.split('.');
+  let output = "";
+  for(let i = 0; i < splitStr.length; i++){
+    if(splitStr[i] == " This program remain open 24 hours during winter months"){
+      output +="</br>";
     }
-  });
-}
-function generateMap(center){
+    output += splitStr[i];
+  }
+  return output;
 }
 //require('dotenv').config();
 function initMap() {
-  // The location of Uluru
-  let nyc_lat = 40.7128;
+  let initial_json_path = "homeless_drop_in_center.json";
+  //let initial_json_path = "homeless_facilities.json";
+  let nyc_lat = 40.738;
   let nyc_lng = -74.006;
   var nyc_lat_lng = {lat: nyc_lat, lng: nyc_lng};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
+  generateMap(initial_json_path, drop_in_center_indexes, nyc_lat_lng);
+}
+function generateMap(json_path, idxs, center){
+  //Center map based on location of markers
+  let map = new google.maps.Map(
     document.getElementById('map'), {
-      zoom: 10,
-      center: nyc_lat_lng
+      zoom: 11,
+      center: center
   });
-  $.getJSON('homeless_drop_in_center.json', function(json){
+  $.getJSON(json_path, function(json){
     console.log('JSON Loaded');
     console.log(json);
-    let lat_idx = 13;
-    let lng_idx = 14;
     for(let i = 0; i < json['data'].length; i++){
-      let lat = parseFloat(json['data'][i][lat_idx]);
-      let lng = parseFloat(json['data'][i][lng_idx]);
+      let lat = parseFloat(json['data'][i][idxs.Lat]);
+      let lng = parseFloat(json['data'][i][idxs.Lng]);
       console.log(lat + " " + lng);
       let marker = new google.maps.Marker({
-        position: {lat, lng}
+        position: {lat, lng},
+        animation: google.maps.Animation.DROP,
+        map: map,
+        title: "Hello World!"
       });
-      marker.setMap(map);
+      let hours_open = json['data'][i][idxs.Hours];
+      let contentString = '<div><p>'+ json['data'][i][idxs.Name] +'</p><div>' + json['data'][i][idxs.Address] + '</div><div>' + json['data'][i][idxs.Borough] + ', NY ' + json['data'][i][idxs.Zip] + '</div></br><div>' + parseHoursOpen(hours_open) +'</div></div>';
+      let infoWindow = new google.maps.InfoWindow({
+          content: contentString
+      });
+      marker.addListener('click', function() {
+          infoWindow.open(map, marker);
+      });
     }
   });
-
-  // The marker, positioned at Uluru
-  /*var marker = new google.maps.Marker({
-    position: nyc_lat_lng,
-    map: map
-  });*/
 }
+
 let apiScript = document.getElementById("apiScript");
-apiScript.src = "https://maps.googleapis.com/maps/api/js?key=**API HERE**&callback=initMap";
+apiScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyA5qrdsN0tofWSWv9d71dPpREvgnlXGByk&callback=initMap";
