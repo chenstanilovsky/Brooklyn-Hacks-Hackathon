@@ -165,4 +165,4 @@ function generateMap(json_path, idxs, center){
 }
 
 let apiScript = document.getElementById("apiScript");
-apiScript.src = "https://maps.googleapis.com/maps/api/js?key=&callback=initMap";
+apiScript.src = "https://maps.googleapis.com/maps/api/js?key=<API KEY HERE>&callback=initMap";
