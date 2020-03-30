@@ -8,77 +8,45 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>The Big Picture - Start Bootstrap Template</title>
+  <title>NYC Homeless Resources</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="public/css/the-big-picture.css" rel="stylesheet">
+  <link href="css/landing.css" rel="stylesheet">
+  <link href="css/the-big-picture.css" rel="stylesheet">
 
 </head>
 
 <body>
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
-    <div class="container">
-      <a class="navbar-brand" href="#">New York City | Homeless Resources</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-			<li class="nav-item">
-            <a class="nav-link" href="#" style="color: red">COVID-19</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
+   <link href="css/the-big-picture.css" rel="stylesheet">
+	<div class="videobackground">
+<!--<video autoplay muted loop>
+	<source src="images/video.mp4" type="video/mp4">
+	</video>-->
+	</div>
   <!-- Page Content -->
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h1 class="mt-5"><img src="images/dhs.svg" alt="NYCDHS Logo"></h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt voluptates rerum eveniet sapiente repellat esse, doloremque quod recusandae deleniti nostrum assumenda vel beatae sed aut modi nesciunt porro quisquam voluptatem.</p>
-        </div>
-      </div>
-      <div class="row">
-        <ul class="nav nav-pills">
-          <li class="active"><a href="#" onclick = "initMap()">Drop-In Centers</a></li>
-          <li><a href="#" onclick = updateMap('facilities')>Facilities</a></li>
-          <li><a href="#" onclick = updateMap('afterschool')>After School Programs</a></li>
-          <li><a href="#" onclick = updateMap('prevention')>Homeless Prevention Network Offices</a></li>
-        </ul>
-        <div id = "map">
-        </div>
-      </div>
-    </div>
-  </section>
+	  
+	  <div class="container h-100 d-flex justify-content-center">
+    <div class="jumbotron my-auto">
+		<center>
+		<img src="../Brooklyn-Hacks/images/dhs.png" width="15%" alt="NYCDHS Logo">
+		<hr>
+		</center>
+		<h5>
+			It is easy to take for granted what is thought to be invariable. The reality for some however, is homelessness. For some finding a place to eat, a place to bathe or get medical treatment is quite challenging. The website we created is a resource for individuals in need of said assistance. It is an easy to navigate map of NYC that is tailored at locating facilities necessary for people with no access to basic human needs. Homelessness is a problem in every metropolis, and with the skyrocketing number coronavirus patients in New York the homeless tend to have a higher risk of infection due to having no access to basic preventative measures like hand soap and running water. Such facilities must be easily accessible to those in need. Click the Icon above to find the help you require.
+		</h5>
+		<hr>
+		<center><a href="pages/map.html"><button>Open Map</button></a>
+		</center>
+	<video autoplay muted loop src="images/video.mp4"></video>
+		  </div>
+ </div>
+	
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script id="apiScript"></script>
-  <script src="public/js/map.js"></script>
-
 
 </body>
-
 </html>
