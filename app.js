@@ -11,7 +11,7 @@ app.get('/index.html', function(req,res){
   res.sendFile('/index.html');
 });
 
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
 /*const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
